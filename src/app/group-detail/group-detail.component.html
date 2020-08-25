@@ -1,0 +1,113 @@
+<div class="container">
+  <h2>Group Details</h2>
+  <hr />
+  <div class="row" style="text-align: left;">
+    <div class="col-md-12">
+      <form>
+        <div class="form-group">
+          <label class="label-title" for="groupName">Group Name</label>
+          <input
+            type="text"
+            name="groupName"
+            [(ngModel)]="groupName"
+            class="form-control"
+            placeholder="Group Name"
+            readonly
+            id="groupName"
+          />
+        </div>
+
+        <hr class="mt-5" />
+        <p class="heading">Group Members</p>
+        <div class="memberContainer">
+          <ul class="d-flex justify-content-start" *ngIf="members.length > 0">
+            <li *ngFor="let user of members; let i = index">
+              <div class="card loadMore">
+                <div class="card-body text-center">
+                  <h5 class="card-title mb-3 user-title">
+                    {{ user.firstName }} {{ user.lastName }}
+                  </h5>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <hr class="mt-5" />
+        <p class="heading" *ngIf="expenseDivisionList.length > 0">
+          Payable amount to other member
+        </p>
+        <div class="memberContainer" *ngIf="expenseDivisionList.length > 0">
+          <ul class="list-group">
+            <li
+              class="list-group-item list-group-item-action flex-column align-items-start"
+              *ngFor="let user of expenseDivisionList; let i = index"
+            >
+              <h5 class="card-title mb-1 user-title">
+                {{ user.name }}
+              </h5>
+              <div *ngIf="user.giveAmountList.length > 0">
+                <p class="card-title mb-3 user-title">
+                  Pay Amount To
+                </p>
+                <ul class="list-group">
+                  <li
+                    class="list-group-item d-flex justify-content-start align-items-center"
+                    *ngFor="let mem of user.giveAmountList; let j = index"
+                  >
+                    {{ mem.name }}
+                    &nbsp;&nbsp;:&nbsp;&nbsp;Rs.&nbsp;{{ mem.amount }}
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <label class="label-title mt-2">Add Members</label>
+        <div class="dropdownStyle">
+          <select
+            class="custom-select"
+            [(ngModel)]="selectedUserId"
+            name="selectedUserId"
+          >
+            <option value="" disabled selected>Select User</option>
+            <option
+              *ngFor="let selectedUser of allUserList"
+              [value]="selectedUser.userId"
+              >{{ selectedUser.firstName }} {{ selectedUser.lastName }}</option
+            >
+          </select>
+        </div>
+
+        <div class="align-Center mt-5">
+          <button
+            (click)="addMember()"
+            class="btn button-bckg mr-2 longTextButton"
+          >
+            Add Member
+          </button>
+          <button
+            (click)="addExpense()"
+            class="btn button-bckg mr-2 longTextButton"
+          >
+            Add Expense
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <hr class="mt-3" />
+  <h3>Expenses List</h3>
+  <div *ngIf="expensesList.length > 0" class="mb-5">
+    <div class="list-group" *ngFor="let expense of expensesList; let i = index">
+      <a class="list-group-item list-group-item-action mt-2">
+        <p class="mb-1" (click)="expenseDetail(expense.expenseId)">
+          {{ expense.name }}
+        </p>
+      </a>
+    </div>
+  </div>
+</div>
+<app-loading-bar *ngIf="loading"></app-loading-bar>

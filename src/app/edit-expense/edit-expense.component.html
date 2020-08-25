@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>Update Expense Details</h2>
+  <hr />
+  <div class="row" style="text-align: left;">
+    <div class="col-md-12">
+      <form>
+        <div class="form-group">
+          <label class="label-title" for="expenseName">Expense Name</label>
+          <input
+            type="text"
+            name="expenseName"
+            [(ngModel)]="expenseName"
+            class="form-control"
+            placeholder="Expense Name"
+            readonly
+            id="expenseName"
+          />
+          <label class="label-title" for="expenseAmount">Expense Amount</label>
+          <input
+            type="text"
+            name="expenseAmount"
+            [(ngModel)]="expenseAmount"
+            class="form-control"
+            placeholder="Expense amount"
+            id="expenseAmount"
+          />
+        </div>
+
+        <label class="label-title mt-2">Select To Update Payee</label>
+        <div class="dropdownStyle">
+          <select
+            class="custom-select"
+            [(ngModel)]="selectedUserId"
+            name="selectedUserId"
+          >
+            <option value="" disabled selected>Select User</option>
+            <option
+              *ngFor="let selectedUser of expenseUserList"
+              [value]="selectedUser.userId"
+              >{{ selectedUser.firstName }} {{ selectedUser.lastName }}</option
+            >
+          </select>
+        </div>
+
+        <div class="align-Center mt-5">
+          <button
+            (click)="updatePayee()"
+            class="btn button-bckg mr-2 longTextButton"
+          >
+            Update Payee
+          </button>
+          <button
+            (click)="updateAmount()"
+            class="btn button-bckg mr-2 longTextButton"
+          >
+            Update Amount
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-loading-bar *ngIf="loading"></app-loading-bar>

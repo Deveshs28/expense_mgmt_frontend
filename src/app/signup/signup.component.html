@@ -1,0 +1,91 @@
+<h2>Enter Details To Create New User</h2>
+<hr />
+<form
+  class="text-center border border-light"
+  #registrationForm="ngForm"
+  (ngSubmit)="registerUser()"
+>
+  <div class="form-row mb-4">
+    <div class="col">
+      <input
+        type="text"
+        id="firstName"
+        class="form-control"
+        placeholder="First name"
+        name="firstName"
+        [(ngModel)]="firstName"
+        required
+      />
+    </div>
+    <div class="col">
+      <input
+        type="text"
+        id="lastName"
+        class="form-control"
+        placeholder="Last name"
+        name="lastName"
+        [(ngModel)]="lastName"
+        required
+      />
+    </div>
+  </div>
+
+  <input
+    type="email"
+    id="emailId"
+    class="form-control"
+    placeholder="Email Address"
+    name="emailId"
+    [(ngModel)]="emailId"
+    [pattern]="emailPattern"
+    required
+  />
+  <input
+    type="password"
+    id="password"
+    class="form-control mt-4"
+    placeholder="Password"
+    name="password"
+    [(ngModel)]="password"
+    required
+  />
+
+  <div class="input-group mt-4">
+    <div class="input-group-prepend">
+      <select
+        [(ngModel)]="countryCode"
+        name="countryCode"
+        class="form-control"
+        id="countryCode"
+        required
+      >
+        <option value="" disabled selected>Country Code</option>
+        <option
+          *ngFor="let countryCode of countryCodeArr"
+          [value]="countryCode"
+          >{{ countryCode }}</option
+        >
+      </select>
+    </div>
+    <input
+      type="text"
+      id="mobileNumber"
+      class="form-control"
+      placeholder="Mobile Number"
+      name="mobileNumber"
+      [(ngModel)]="mobileNumber"
+      [pattern]="mobileNumberPattern"
+      required
+    />
+  </div>
+
+  <button
+    class="btn btn-lg button-bckg registration-btn w-50"
+    type="submit"
+    [disabled]="!registrationForm.form.valid"
+  >
+    Register
+  </button>
+</form>
+
+<app-loading-bar *ngIf="loading"></app-loading-bar>

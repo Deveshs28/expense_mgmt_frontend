@@ -1,0 +1,16 @@
+<h2>{{ userInfo.firstName }} {{ userInfo.lastName }}</h2>
+<p class="contactInfo">
+  T : ({{ userInfo.countryCode }}) {{ userInfo.mobile }} | E: {{ userInfo.email }}
+</p>
+<hr />
+
+<div class="mt-5 mr-4 d-flex justify-content-end">
+  <button
+    class="btn btn-primary logoutButton button-bckg"
+    type="button"
+    (click)="logout()"
+  >
+    Logout
+  </button>
+</div>
+<app-loading-bar *ngIf="loading"></app-loading-bar>

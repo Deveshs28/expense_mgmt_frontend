@@ -1,0 +1,87 @@
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid #186a3b; /* green */
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #c0392b; /* red */
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(248, 196, 113, 0.8);
+  box-shadow: 0 1px 1px rgba(248, 196, 113, 0.075) inset,
+    0 0 8px rgba(248, 196, 113, 0.6);
+  outline: 0 none;
+}
+
+.label-title {
+  font-size: 16px;
+  margin-top: 1em;
+}
+
+.align-Center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdownStyle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.button-bckg {
+  background-color: #7e5109;
+  color: #ffffff;
+}
+
+select {
+  width: 50%;
+}
+
+h2 {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+button {
+  width: 30%;
+}
+
+select,
+option,
+textarea {
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  h2 {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .label-title {
+    font-size: 14px;
+  }
+
+  input {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  button {
+    font-size: 16px;
+    width: 40%;
+  }
+
+  select,
+  option,
+  textarea {
+    font-size: 14px;
+  }
+}

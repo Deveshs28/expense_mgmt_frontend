@@ -1,0 +1,59 @@
+.registration-btn {
+  margin: 4rem 0;
+}
+
+h2 {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+form {
+  padding: 3rem;
+}
+
+.button-bckg {
+  background-color: #7e5109;
+  color: #ffffff;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid #186a3b; /* green */
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #c0392b; /* red */
+}
+
+input:focus {
+  border-color: rgba(248, 196, 113, 0.8);
+  box-shadow: 0 1px 1px rgba(248, 196, 113, 0.075) inset,
+    0 0 8px rgba(248, 196, 113, 0.6);
+  outline: 0 none;
+}
+
+@media (max-width: 600px) {
+  h2 {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  .registration-btn {
+    font-size: 16px;
+  }
+
+  form {
+    padding: 1rem;
+  }
+
+  select {
+    width: 90px;
+    font-size: 14px;
+  }
+}

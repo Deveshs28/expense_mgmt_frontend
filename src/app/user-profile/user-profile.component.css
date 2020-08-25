@@ -1,0 +1,39 @@
+h2 {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.contactInfo {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.logoutButton {
+  width: 30%;
+}
+
+.button-bckg {
+  background-color: #7e5109;
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  h2 {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .contactInfo {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .logoutButton {
+    width: 40%;
+    font-size: 16px;
+  }
+}

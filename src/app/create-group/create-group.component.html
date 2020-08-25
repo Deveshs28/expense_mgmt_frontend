@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>Enter Details To Create New Group</h2>
+  <hr />
+  <div class="row" style="text-align: left;">
+    <div class="col-md-12">
+      <form #createGroupForm="ngForm" (ngSubmit)="createGroup()">
+        <div class="form-group">
+          <label class="label-title" for="groupTitle">Group Title</label>
+          <input
+            type="text"
+            name="groupTitle"
+            [(ngModel)]="groupTitle"
+            class="form-control"
+            placeholder="Enter Group Title"
+            required
+            id="groupTitle"
+          />
+        </div>
+        <div class="align-Center mt-5">
+          <button
+            type="submit"
+            class="btn button-bckg"
+            [disabled]="!createGroupForm.form.valid"
+          >
+            Create
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-loading-bar *ngIf="loading"></app-loading-bar>

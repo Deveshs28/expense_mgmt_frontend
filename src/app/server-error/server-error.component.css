@@ -1,0 +1,19 @@
+.error-code {
+  font-size: 10rem;
+  font-weight: bold;
+  color: coral;
+}
+
+@media (max-width: 600px) {
+  .error-code {
+    font-size: 6rem;
+  }
+
+  h2 {
+    font-size: 14px;
+  }
+
+  a {
+    font-size: 14px;
+  }
+}

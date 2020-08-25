@@ -1,0 +1,59 @@
+<div class="container">
+  <h2>Enter Details To Add New Expense in Group</h2>
+  <hr />
+  <div class="row" style="text-align: left;">
+    <div class="col-md-12">
+      <form #createExpenseForm="ngForm" (ngSubmit)="createExpense()">
+        <div class="form-group">
+          <label class="label-title" for="expenseTitle">Expense Name</label>
+          <input
+            type="text"
+            name="expenseTitle"
+            [(ngModel)]="expenseTitle"
+            class="form-control"
+            placeholder="Enter Expense Name"
+            required
+            id="expenseTitle"
+          />
+
+          <label class="label-title" for="expenseAmount">Amount</label>
+          <input
+            type="number"
+            name="expenseAmount"
+            [(ngModel)]="expenseAmount"
+            class="form-control"
+            placeholder="Enter Expense Amount"
+            required
+            id="expenseAmount"
+          />
+        </div>
+        <label class="label-title mt-2">Amount Paid By</label>
+        <div class="dropdownStyle">
+          <select
+            class="custom-select"
+            [(ngModel)]="selectedUserId"
+            name="selectedUserId"
+            required
+          >
+            <option value="" disabled selected>Select User</option>
+            <option
+              *ngFor="let selectedUser of allUserList"
+              [value]="selectedUser.userId"
+              >{{ selectedUser.firstName }} {{ selectedUser.lastName }}</option
+            >
+          </select>
+        </div>
+        <div class="align-Center mt-5">
+          <button
+            type="submit"
+            class="btn button-bckg"
+            [disabled]="!createExpenseForm.form.valid"
+          >
+            Add Expense
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-loading-bar *ngIf="loading"></app-loading-bar>

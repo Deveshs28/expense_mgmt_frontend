@@ -1,0 +1,127 @@
+<div class="container">
+  <h2>Expense Details</h2>
+  <hr />
+  <div class="row" style="text-align: left;">
+    <div class="col-md-12">
+      <form>
+        <div class="form-group">
+          <label class="label-title" for="expenseName">Expense Name</label>
+          <input
+            type="text"
+            name="expenseName"
+            [(ngModel)]="expenseName"
+            class="form-control"
+            placeholder="Expense Name"
+            readonly
+            id="expenseName"
+          />
+          <label class="label-title" for="expenseAmount">Expense Amount</label>
+          <input
+            type="text"
+            name="expenseAmount"
+            [(ngModel)]="expenseAmount"
+            class="form-control"
+            placeholder="Expense amount"
+            readonly
+            id="expenseAmount"
+          />
+          <label class="label-title" for="expenseCreateDate"
+            >Expense Created On</label
+          >
+          <input
+            type="text"
+            name="expenseCreateDate"
+            [ngModel]="expenseCreateDate | date"
+            class="form-control"
+            (ngModelChange)="expenseCreateDate = $event"
+            placeholder="Expense Created On"
+            readonly
+            id="expenseCreateDate"
+          />
+        </div>
+
+        <hr class="mt-5" />
+        <p class="heading">Expense Members</p>
+        <div class="memberContainer">
+          <ul class="d-flex justify-content-start" *ngIf="members.length > 0">
+            <li *ngFor="let user of members; let i = index">
+              <div class="card loadMore">
+                <div class="card-body text-center">
+                  <h5 class="card-title mb-1 user-title">
+                    {{ user.name }}
+                  </h5>
+                  <h5 class="card-title mb-2 user-title" *ngIf="user.isPayee">
+                    {{ user.pendingAmount }}
+                  </h5>
+                  <p class="card-title mb-2 user-title" *ngIf="!user.isPayee">
+                    Pay {{ user.pendingAmount }} to <br />
+                    {{ payeeName }}
+                  </p>
+                  <a
+                    class="card-link mb-1"
+                    *ngIf="!user.isPayee"
+                    (click)="removeUser(i)"
+                    >Remove User</a
+                  >
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <label class="label-title mt-2">Add Members</label>
+        <div class="dropdownStyle">
+          <select
+            class="custom-select"
+            [(ngModel)]="selectedUserId"
+            name="selectedUserId"
+          >
+            <option value="" disabled selected>Select User</option>
+            <option
+              *ngFor="let selectedUser of groupUserList"
+              [value]="selectedUser.userId"
+              >{{ selectedUser.firstName }} {{ selectedUser.lastName }}</option
+            >
+          </select>
+        </div>
+
+        <div class="align-Center mt-5">
+          <button
+            (click)="addMember()"
+            class="btn button-bckg mr-2 longTextButton"
+          >
+            Add Member
+          </button>
+          <button
+            (click)="editExpense()"
+            class="btn button-bckg mr-2 longTextButton"
+          >
+            Edit Expense
+          </button>
+          <button
+            (click)="deleteExpense()"
+            class="btn button-bckg mr-2 longTextButton"
+          >
+            Delete Expense
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <hr class="mt-3" />
+  <h3>Expenses History</h3>
+  <div *ngIf="expensesHistoryList.length > 0" class="mb-5">
+    <div
+      class="list-group"
+      *ngFor="let history of expensesHistoryList; let i = index"
+    >
+      <a class="list-group-item list-group-item-action mt-2">
+        <p class="mb-1">
+          {{ history.message }}
+        </p>
+      </a>
+    </div>
+  </div>
+</div>
+<app-loading-bar *ngIf="loading"></app-loading-bar>
